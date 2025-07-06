@@ -1,1 +1,5 @@
-# List of dependencies for the health check service application 1
+# List of dependencies
+fastapi
+uvicorn
+pydantic
+pytest
