@@ -1,0 +1,1 @@
+# Use case for health check logic 
