@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 from app.infrastructure.api.health_router import router as health_router
 
-app = FastAPI()
+app = FastAPI(prefix="/api")
 
 app.include_router(health_router)
 
