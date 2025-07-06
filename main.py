@@ -3,9 +3,9 @@
 from fastapi import FastAPI
 from app.infrastructure.api.health_router import router as health_router
 
-app = FastAPI(prefix="/api")
+app = FastAPI()
 
-app.include_router(health_router)
+app.include_router(health_router, prefix="/api")
 
 # Run the FastAPI application with uvicorn server on port 8000
 if __name__ == "__main__":
