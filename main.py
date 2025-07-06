@@ -1,1 +1,12 @@
-# Main entry point for the health check service application 
+# Main entry point for the application
+
+from fastapi import FastAPI
+from app.infrastructure.api.health_router import router as health_router
+
+app = FastAPI()
+
+app.include_router(health_router)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True) 
