@@ -12,6 +12,7 @@ The service follows a scaffold clean architecture pattern with the following str
 
 ## Directory Tree
 
+```
 health_check_service/
 ├── main.py
 ├── requirements.txt
@@ -30,3 +31,4 @@ health_check_service/
 │       └── settings.py
 └── tests/
     └── test_health.py
+```
