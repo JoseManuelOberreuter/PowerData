@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  powerdata-app:
+    # Build from Dockerfile in parent directory
+    build: 
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - ENVIRONMENT=development
+    # Mount code volumes as read-only
+    volumes:
+      - ../app:/app/app:ro
+      - ../main.py:/app/main.py:ro
+    restart: unless-stopped
+    # Health check configuration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
