@@ -32,3 +32,39 @@ health_check_service/
 └── tests/
     └── test_health.py
 ```
+
+## How to Run
+
+### 1. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run the application
+```bash
+python main.py
+```
+
+Or with uvicorn directly:
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### 3. Test the endpoint
+```bash
+curl http://localhost:8000/api/health
+```
+
+Response:
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-15T10:30:00.123456",
+  "message": "Service is running normally"
+}
+```
+
+### 4. Run tests
+```bash
+pytest tests/
+```
