@@ -3,7 +3,13 @@
 from fastapi import FastAPI
 from app.infrastructure.api.health_router import router as health_router
 
-app = FastAPI()
+app = FastAPI(
+    title="health-check-service",
+    description="Simple API for service health monitoring",
+    version="1.0.0",
+    docs_url="/docs",  
+    redoc_url="/redoc" 
+)
 
 app.include_router(health_router, prefix="/api")
 
