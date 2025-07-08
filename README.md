@@ -13,24 +13,32 @@ The service follows a scaffold clean architecture pattern with the following str
 ## Directory Tree
 
 ```
-health_check_service/
+health-check-service/
 ├── main.py
 ├── requirements.txt
+├── Dockerfile
+├── README.md
 ├── app/
-│   ├── infrastructure/
-│   │   ├── api/
-│   │   │   └── health_router.py
-│   │   └── repository/
-│   │       └── health_repository.py
+│   ├── __init__.py
+│   ├── config/
+│   │   └── settings.py
 │   ├── domain/
-│   │   ├── use_cases/
-│   │   │   └── health_check_usecase.py
-│   │   └── models/
-│   │       └── health_status.py
-│   └── config/
-│       └── settings.py
+│   │   ├── __init__.py
+│   │   ├── models/
+│   │   │   └── health_status.py
+│   │   └── use_cases/
+│   │       └── health_check_usecase.py
+│   └── infrastructure/
+│       ├── __init__.py
+│       └── api/
+│           └── health_router.py
+├── deployment/
+│   ├── deploy.sh
+│   └── docker-compose.yml
 └── tests/
+    ├── __init__.py
     └── test_health.py
+
 ```
 
 ## How to Run
@@ -68,3 +76,47 @@ Response:
 ```bash
 pytest tests/
 ```
+
+### 5. API Documentation (Swagger)
+```bash
+http://localhost:8000/docs
+```
+
+## Functional Documentation
+
+### Business Rules
+- Health check always returns "healthy" status
+- Includes timestamp and service message
+- No authentication required
+
+### Use Cases
+- **UC001**: Get service health status
+  - **Input**: HTTP GET request to `/api/health`
+  - **Output**: JSON with status, timestamp, and message
+
+## Technical Documentation
+
+### Technology Stack
+- **Framework**: FastAPI
+- **Language**: Python 3.11
+- **Server**: Uvicorn
+- **Architecture**: Clean Architecture
+- **Testing**: Pytest
+- **Containerization**: Docker
+
+### Configuration
+- **Port**: 8000
+- **Environment**: Development
+- **Settings**: `app/config/settings.py`
+
+## Quality Documentation
+
+### Test Coverage
+- **Unit Tests**: Domain models and use cases
+- **Integration Tests**: API endpoints
+- **Test Runner**: `pytest tests/`
+
+### Code Quality
+- **Architecture**: Clean Architecture pattern
+- **Separation of Concerns**: Domain, Infrastructure, Config
+- **Error Handling**: Built-in FastAPI error handling
